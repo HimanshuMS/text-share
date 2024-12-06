@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 export default function ViewerPage({ params: asyncParams }: { params: Promise<{ id: string }> }) {
   const [text, setText] = useState<string | null>(null);
   const [id, setId] = useState<string | null>(null);
+  const [show, setShow] = useState<string | null>(null)
+  
 
   // Unwrap params using useEffect
   useEffect(() => {
@@ -35,18 +37,26 @@ export default function ViewerPage({ params: asyncParams }: { params: Promise<{ 
     return <div>Loading...</div>;
   }
 
+  if (show) {
+    setTimeout(() => {
+      setShow(null)
+    }, 3000)
+  }
+
   return (
-    <div className="space-y-4 h-screen flex flex-col items-center justify-center p-24">
-      <h1 className="text-xl font-bold">Shared Text</h1>
-      <textarea className="p-4 w-full bg-gray-100 rounded text-black" readOnly defaultValue={text}></textarea>
+    <div className="space-y-4 h-screen flex flex-col items-center justify-center p-8 md:p-24">
+      <h1 className="text-6xl font-black">Text Sharer</h1>
+      <textarea className="w-full p-6 border rounded-3xl text-black active:rounded-none focus:outline-none duration-300 ease-in-out" readOnly defaultValue={text}></textarea>
       {text !== "Text not found or no longer available." && (
         <button
-          onClick={() => {navigator.clipboard.writeText(text); alert("Text Copied")}}
-          className="px-4 py-2 bg-blue-500 text-white rounded"
+          onClick={() => {navigator.clipboard.writeText(text); setShow("Text is copied!")}}
+          className="px-6 py-2 bg-white text-slate-950 text-2xl rounded-3xl hover:rounded-none duration-300 ease-in-out"
         >
           Copy Text
         </button>
       )}
+
+      {show && (<p className="text-white text-xl">{show}</p>)}
     </div>
   );
 }
