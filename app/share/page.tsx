@@ -41,21 +41,21 @@ export default function UploaderPage() {
     <div className="space-y-4 h-screen flex flex-col items-center justify-center p-8 md:p-24">
       <h1 className="text-6xl font-black">Text Sharer</h1>
       <textarea
-        className="w-full p-6 border rounded-3xl text-black focus:rounded-none focus:outline-none duration-300 ease-in-out"
+        className="w-full p-6 border rounded-3xl text-black focus:outline-none"
         rows={4}
         placeholder="Enter text to share"
         value={text}
         onChange={(e) => setText(e.target.value)}
       ></textarea>
       <button
-        className="px-6 py-2 bg-white text-slate-950 text-2xl rounded-3xl hover:rounded-none duration-300 ease-in-out "
+        className="px-6 py-2 bg-white text-slate-950 text-2xl rounded-3xl hover:bg-yellow-400 duration-300 ease-in-out "
         onClick={handleTextSubmit}
       >
         Generate Code
       </button>
       {link && (
         <div className="bg-gray-100 rounded text-black py-2 px-4">
-          <div className="flex flex-row">Your Code: <p className="pl-4 font-black">{link}</p></div>
+          <div className="flex text-2xl items-center flex-row">Your Code: <p className="pl-4 text-3xl font-black">{link}</p></div>
         </div>
       )}
     </div>

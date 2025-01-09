@@ -16,7 +16,7 @@ export default function UploaderPage() {
         onChange={(e) => setText(e.target.value)}
       ></input>
       <Link
-        className="px-6 py-2 bg-white text-slate-950 text-2xl rounded-3xl hover:rounded-none duration-300 ease-in-out"
+        className="px-6 py-2 bg-white text-slate-950 text-2xl rounded-3xl hover:bg-yellow-400 duration-300 ease-in-out"
         href={`/view/${text}`}
       >
         View

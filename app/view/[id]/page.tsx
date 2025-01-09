@@ -1,6 +1,7 @@
 // /app/view/[id]/page.tsx
 'use client';
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function ViewerPage({ params: asyncParams }: { params: Promise<{ id: string }> }) {
@@ -50,13 +51,16 @@ export default function ViewerPage({ params: asyncParams }: { params: Promise<{ 
       {text !== "Text not found or no longer available." && (
         <button
           onClick={() => {navigator.clipboard.writeText(text); setShow("Text is copied!")}}
-          className="px-6 py-2 bg-white text-slate-950 text-2xl rounded-3xl hover:rounded-none duration-300 ease-in-out"
+          className="px-6 py-2 bg-white text-slate-950 text-2xl rounded-3xl hover:bg-yellow-400 duration-300 ease-in-out"
         >
           Copy Text
         </button>
       )}
 
       {show && (<p className="text-white text-xl">{show}</p>)}
+      <Link href='/view' className="px-6 py-2 bg-white text-slate-950 text-2xl rounded-3xl hover:bg-yellow-400 duration-300 ease-in-out ">
+        Enter New Code
+      </Link>
     </div>
   );
 }
