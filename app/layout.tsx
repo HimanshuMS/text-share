@@ -14,7 +14,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Nortex - Share Text",
+  title: "Text Sharer",
   description: "Simple Secure Text Sharing",
 };
 
